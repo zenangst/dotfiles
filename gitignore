@@ -1,0 +1,7 @@
+.DS_Store
+.virtualenv
+.vagrant
+*.pyc
+.env
+.rbenv-version
+xcuserdata

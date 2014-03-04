@@ -1,0 +1,29 @@
+servers = (
+  {
+    address = "irc1.port80.se";
+    chatnet = "quakenet";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
+    autoconnect = "yes";
+  }
+);
+
+chatnets = { Quakenet = { type = "IRC"; }; };
+
+channels = (
+);
+
+settings = {
+  core = {
+    real_name = "Christoffer Winterkvist";
+    user_name = "sleas";
+    nick = "sleas";
+  };
+  "fe-text" = {
+    actlist_sort = "refnum";
+    term_force_colors = "yes";
+    scrollback_time = "7day ";
+  };
+  "fe-common/core" = { theme = "BitchX"; };
+};
