@@ -131,7 +131,7 @@ function fish_default_key_bindings -d "Default (Emacs-like) key bindings for fis
   bind \ca backward-word
   bind \cs history-search-forward
   bind \cw history-search-backward
-  
+  bind \cr end-of-line
   bind \cx kill-word
 
 end
