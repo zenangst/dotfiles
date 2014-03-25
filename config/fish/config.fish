@@ -1,3 +1,6 @@
+set -gx ARCHFLAGS -Wno-error=unused-command-line-argument-hard-error-in-future
+set -gx RBENV_ROOT /usr/local/var/rbenv
+
 # Path to your oh-my-fish.
 set fish_path $HOME/.oh-my-fish
 
@@ -13,3 +16,5 @@ set fish_theme zen
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
+
+. (rbenv init -|psub)
