@@ -5,3 +5,5 @@
 .env
 .rbenv-version
 xcuserdata
+.xcuserstate
+.ruby-version
