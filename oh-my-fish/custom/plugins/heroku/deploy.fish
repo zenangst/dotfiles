@@ -8,17 +8,17 @@ function heroku_run_with_exit
 end
 
 function deploy
-  if test (echo $argv | wc -w) -ge 1 
+  if test (echo $argv | wc -w) -ge 1
     set branch "master"
     set remote $argv[1]
   else
     set branch $argv[1]
     set remote $argv[2]
   end
-  
+
   heroku maintenance:on -r $remote
   and git push $remote $branch:master
-  
+
   if test $status -eq 0
     heroku_run_with_exit $remote "rake db:migrate"
     and heroku ps:restart -r $remote
