@@ -3,8 +3,9 @@ set -gx RBENV_ROOT /usr/local/var/rbenv
 set -gx GIT_EDITOR /usr/bin/vim
 set -gx VISUAL /usr/bin/vim
 set -gx EDITOR /usr/bin/vim
-set -gx PATH /usr/local/git/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+set -gx PATH /usr/local/bin /usr/bin /bin /usr/libexec /usr/sbin /sbin
 set -gx PKG_CONFIG_PATH = "/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+set -gx CODA_TERMINAL "-rp"
 
 # Path to your oh-my-fish.
 set fish_path $HOME/.oh-my-fish
