@@ -1,0 +1,34 @@
+snippet lazy
+	- (${1:returnType} *)${2:lazyHandler}￼
+	{
+	    if (_$2) return _$2;
+
+	    _$2 = [$1 ${3}];￼
+
+	    return _$2;
+	}
+snippet shared
+	+ (instancetype)${1:sharedHandler}￼
+	{
+	    static id sharedInstance = nil;
+
+	    static dispatch_once_t onceToken;
+	    dispatch_once(&onceToken, ^{
+	        sharedInstance = [[self alloc] init];
+	    });
+
+	    return sharedInstance;
+	}
+snippet init
+	self = [super init];
+	if (!self) return nil;
+
+	${1}
+
+	return self;
+snippet weakself
+	__weak typeof(self)weakSelf = self;
+snippet addObserver
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(${1:selector}) name:@"${2:observerName}" object:nil];
+snippet postnote
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"${1:notificationName}" object:nil];
