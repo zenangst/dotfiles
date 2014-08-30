@@ -2,3 +2,13 @@ config/fish/fish_history
 config/fish/fish_read_history
 config/fish/fishd.*
 config/fish/generated_completions/*
+vim/cache
+vim/sessions
+zsh_history
+wraprc
+viminfo*
+/.hg*
+symlinks.txt
+config/filezilla/*
+
+vim/.netrwhist

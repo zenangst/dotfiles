@@ -19,3 +19,4 @@ DerivedData
 .ruby-version
 .xcuserstate
 .clang_complete
+*.pyc

@@ -290,7 +290,7 @@ endfun
 if version >= 700
   call s:X("CursorLine","","1c1c1c","","","")
   call s:X("CursorColumn","","1c1c1c","","","")
-  call s:X("MatchParen","ffffff","80a090","bold","","")
+  call s:X("MatchParen","000000","ffffff","","","")
 
   call s:X("TabLine","000000","b0b8c0","italic","","Black")
   call s:X("TabLineFill","9098a0","","","","")
@@ -309,9 +309,9 @@ call s:X("LineNr","605958","151515","none","Black","")
 call s:X("Comment","888888","","italic","Grey","")
 call s:X("Todo","808080","","bold","","")
 
-call s:X("StatusLine","f0f0f0","101010","italic","","")
-call s:X("StatusLineNC","a0a0a0","181818","italic","","")
-call s:X("VertSplit","181818","181818","italic","","")
+call s:X("StatusLine","f0f0f0","888888","italic","","")
+call s:X("StatusLineNC","a0a0a0","444444","italic","","")
+call s:X("VertSplit","222222","222222","italic","","")
 
 call s:X("Folded","a0a8b0","384048","italic","black","")
 call s:X("FoldColumn","a0a8b0","384048","","","")
@@ -339,7 +339,7 @@ call s:X("NonText","808080","151515","","","")
 
 call s:X("SpecialKey","808080","343434","","","")
 
-call s:X("Search","000000","fad07a","","Magenta","")
+call s:X("Search","f0a0c0","302028","underline","Magenta","")
 
 call s:X("Directory","dad085","","","","")
 call s:X("ErrorMsg","","902020","","","")
@@ -352,7 +352,7 @@ hi link diffAdded String
 
 " VimDiff
 
-call s:X("DiffAdd","","032218","","Black","DarkGreen")
+call s:X("DiffAdd","","0A4500","","Black","DarkGreen")
 call s:X("DiffChange","","100920","","Black","DarkMagenta")
 call s:X("DiffDelete","220000","220000","","DarkRed","DarkRed")
 call s:X("DiffText","","000940","","","DarkRed")
