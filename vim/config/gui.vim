@@ -22,3 +22,5 @@ hi GitGutterChange guifg=#111111 guibg=#FED200
 hi GitGutterDelete guifg=#E92516 guibg=#FEECEC
 hi GitGutterChangeDelete guifg=#683F32 guibg=#F7EED5
 
+autocmd! GUIEnter * set vb t_vb=
+

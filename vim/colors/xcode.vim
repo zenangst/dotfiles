@@ -10,16 +10,16 @@
 
 set background=light
 set transparency=0
-set guifont=Mensch:h11
+set guifont=Bitstream\ Vera\ Sans\ Mono:h12
 
 hi clear
 if exists("syntax_on")
     syntax reset
 endif
-let g:colors_name="mix"
+let g:colors_name="xcode"
 
 
-hi Normal        guifg=#1a1a1a  guibg=white
+hi Normal        guifg=black  guibg=white
 hi Title         guifg=black    guibg=white
 hi Cursor        guibg=#2E72D1
 hi LineNr        guifg=#aaaaaa  guibg=#f8f8f8
@@ -55,7 +55,7 @@ endif
 
 
 " Syntax highlighting
-hi Comment       guifg=#598D38  gui=none
+hi Comment       guifg=#167300  gui=none
 "hi Todo         guifg=#225522  guibg=white    gui=italic
 hi Todo          guifg=#6CBE41  guibg=#D8F6C0  gui=italic
 hi Operator      guifg=#232323  gui=none
@@ -65,12 +65,12 @@ hi Type          guifg=#598D38  gui=none
 hi Constant      guifg=#291261  gui=none
 hi Conditional   guifg=#107D52  gui=none
 hi Delimiter     guifg=#1a1a1a  gui=none
-hi PreProc       guifg=#007050  gui=none
+hi PreProc       guifg=#62381e  gui=none
 hi Special       guifg=#127BB9  gui=none
 hi Keyword       guifg=#007050  gui=none
 hi Function      guifg=#204A87
 hi Number        guifg=#127BB9
-hi String        guifg=#B9671C  guibg=#FEFCF6
+hi String        guifg=#C41A15
 
 "hi link Function        Normal
 hi link Character       Constant

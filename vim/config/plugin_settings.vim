@@ -7,7 +7,6 @@ let g:gist_clip_command = 'pbcopy'
 " Detect the gist filetype from the filename
 let g:gist_detect_filetype = 1
 
-
 " ctrlP
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -51,6 +50,8 @@ inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><TAB>  pumvisible() ? neocomplete#close_popup() : "\<TAB>"
 
+let g:marching_enable_neocomplete = 1
+
 " neosnippet
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
@@ -59,12 +60,22 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
+
 let g:neosnippet#snippets_directory='~/.vim/bundle/zen-snippets.vim/snippets'
 
 " clang
-let g:clang_complete_auto = 1
-let g:clang_auto_select = 1
+"set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
+
+let g:clang_auto_select=1
+let g:clang_complete_auto = 0
 let g:clang_use_library = 1
+let g:clang_periodic_quickfix = 0
+let g:clang_close_preview = 1
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'clang_complete'
 
 " gitgutter
 highlight clear SignColumn
@@ -96,9 +107,21 @@ set sessionoptions-=help
 let CoVim_default_name = "chrisw"
 let CoVim_default_port = "22"
 
-" " Read the clang complete file
-"let g:syntastic_objc_config_file = '.clang_complete'
-"
-" " Status line configuration
-let g:syntastic_enable_signs=0  " Show sidebar signs.
-let g:syntastic_objc_config_file = '.syntastic_complete'
+" Show sidebar signs.
+let g:syntastic_enable_signs=1
+
+" Read the clang complete file
+let g:syntastic_objc_config_file = '.clang_complete'
+
+" Status line configuration
+set statusline+=%#warningmsg#  " Add Error ruler.
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+nnoremap <silent> ` :Errors<CR>
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+" LimeLight
+set g:limelight_default_coefficient = 0.4

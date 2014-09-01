@@ -1,3 +1,16 @@
+function! s:GotoNextWindow( direction, count )
+    let l:prevWinNr = winnr()
+    execute a:count . 'wincmd' a:direction
+    return winnr() != l:prevWinNr
+endfunction
+
+" Add wrapping to cycling windows
+function! s:JumpWithWrap( direction, opposite )
+    if ! s:GotoNextWindow(a:direction, v:count1)
+        call s:GotoNextWindow(a:opposite, 999)
+    endif
+endfunction
+
 let g:loaded_alt_mappings = 1
 
 " Jump to the marked line and column on ', and only the marked line on `.
@@ -22,6 +35,11 @@ nmap <Leader>hv <Plug>GitGutterPreviewHunk
 :nnoremap <silent> « :<C-u>call <SID>JumpWithWrap('l', 'h')<CR>
 :nnoremap <silent> ç :<C-u>call <SID>JumpWithWrap('j', 'k')<CR>
 :nnoremap <silent> Ç :<C-u>call <SID>JumpWithWrap('k', 'j')<CR>
+
+:map! <silent> ‹ <esc>:<C-u>call <SID>JumpWithWrap('h', 'l')<CR>
+:map! <silent> « <esc>:<C-u>call <SID>JumpWithWrap('l', 'h')<CR>
+:map! <silent> ç <esc>:<C-u>call <SID>JumpWithWrap('j', 'k')<CR>
+:map! <silent> Ç <esc>:<C-u>call <SID>JumpWithWrap('k', 'j')<CR>
 
 :map! <D-S> <ESC>:split<CR>
 :nnoremap <D-S> :split<CR>
@@ -99,11 +117,18 @@ nmap <Leader>hv <Plug>GitGutterPreviewHunk
 :vmap æ <right>
 :vmap ø <down>
 
+:nnoremap <silent> <D-M-CR> A;
+:nnoremap <silent> <d-cr> o
+:inoremap <silent> <d-cr> <esc>o
+
+" GitGutter
 :nnoremap ◊ :silent GitGutterToggle<CR>
 :nnoremap <D-d> :silent GitGutterNextHunk<CR>
 :nnoremap <D-D> :silent GitGutterPrevHunk<CR>
 :map! <D-d> <esc>:silent GitGutterNextHunk<CR>
 :map! <D-D> <esc>:silent GitGutterPrevHunk<CR>
+
+" Switching Buffers
 :nnoremap ≥ :silent bprev<CR>
 :nnoremap ≤ :silent bnext<CR>
 :nnoremap ˝ :silent bd<CR>
@@ -114,5 +139,10 @@ nmap <silent> <leader>sv :so $MYVIMRC
 
 " Remap to <leader>g for easy use
 nnoremap <leader>g :call SetGitDir()<CR>
+
+" LimeLight
+nnoremap <D-M> :call ToggleLimeLight()<CR>
+inoremap <D-M> <esc>:call ToggleLimeLight()<CR>i<right>
+
 
 nnoremap <silent> ` :Errors<CR>

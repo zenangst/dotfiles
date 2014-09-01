@@ -47,3 +47,12 @@ function! HighlightSearch()
     return ''
   endif
 endfunction
+
+function! ToggleLimeLight()
+    if &background == 'light'
+        let g:limelight_default_coefficient = 0.7
+    else
+        let g:limelight_default_coefficient = 0.4
+    endif
+    Limelight!!
+endfunction

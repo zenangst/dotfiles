@@ -28,6 +28,7 @@ set scrolloff=3
 
 " Set color scheme
 set t_Co=256
+set term=screen-256color
 colorscheme zenangst
 
 " Enable syntax highlighting
@@ -76,6 +77,11 @@ set wildmenu
 " Allow deleting anything with backspace.
 set backspace=indent,eol,start
 
+" No more cowbell
+set noerrorbells
+set novisualbell
+set t_vb=
+
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
@@ -93,13 +99,16 @@ source ~/.vim/config/plugin_settings.vim
 source ~/.vim/config/autocommands.vim
 source ~/.vim/config/syntax.vim
 source ~/.vim/config/statusline.vim
+
 command! W :w
 
 if has("mouse")
     set mouse=a
 endif
+
 "set verbosefile=~/.log/vim/verbose.log
 "set verbose=15
+
 set viminfo+=n/Users/christofferwinterkvist/Dropbox/com~apple~CloudDocs/dotfiles/viminfo
 set foldlevelstart=20
 
