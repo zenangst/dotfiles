@@ -1,8 +1,8 @@
 set nocompatible
 set ttyfast
 set autoread
-set lazyredraw
-set virtualedit=""
+"set lazyredraw
+set scrolloff=10
 
 " Remap leader to ",".
 let mapleader = ","
@@ -86,6 +86,8 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+set nocursorline
+
 set omnifunc=syntaxcomplete#Complete
 set completefunc=syntaxcomplete#Complete
 set completeopt+=longest
@@ -111,6 +113,9 @@ endif
 
 set viminfo+=n/Users/christofferwinterkvist/Dropbox/com~apple~CloudDocs/dotfiles/viminfo
 set foldlevelstart=20
+
+set virtualedit=onemore
+set whichwrap+=<,>,h,l,[,]
 
 if has("gui_running")
     source ~/.vim/config/gui.vim

@@ -56,3 +56,8 @@ function! ToggleLimeLight()
     endif
     Limelight!!
 endfunction
+
+if !exists(":DiffOrig")
+command DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 0d_ | diffthis | :exe "norm! ".g:diffline."G" | wincmd p | diffthis | wincmd p
+endif
+

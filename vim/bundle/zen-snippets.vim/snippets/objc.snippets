@@ -28,7 +28,154 @@ snippet init
 	return self;
 snippet weakself
 	__weak typeof(self)weakSelf = self;
+snippet strongself
+    __strong __typeof(${1:weakSelf}))strongSelf = ￼${1:weakSelf};
 snippet addObserver
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(${1:selector}) name:@"${2:observerName}" object:nil];
 snippet postnote
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"${1:notificationName}" object:nil];
+
+snippet NSLog
+    NSLog(${1:NSString *format}, ${2:...});
+
+snippet frame
+    CGRect ${1:view}.frame = ({${1:view}.frame;
+        ${2:...}
+        frame;
+    });
+
+snippet warn
+    #warning ${1:warning}
+
+snippet stack
+    NSLog(@"Call Stack: %@", [NSThread callStackSymbols]);
+
+snippet checkerror
+    static void CheckError(OSStatus error, const char *operation) {
+        if (error == noErr) {
+        return;
+        }
+
+        char str[20];
+        *(UInt32 *) (str + 1) = CFSwapInt32HostToBig(error);
+        if (isprint(str[1]) && isprint(str[2]) && isprint(str[3]) && isprint(str[4])) {
+            str[0] = str[5] = '\'';
+            str[6] = '\0';
+        } else {
+            sprintf(str, "%d", (int)error);
+        }
+
+        fprintf(stderr, "[Error] %s (%s)\n", operation, str);
+        exit(1);
+    }
+
+snippet UIAlertView
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:${1:title}￼ message:${2:title}￼delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+
+snippet NSArray
+    NSArray *${1:array}￼ = @[${2:content}];
+
+snippet NSDictionary
+    NSDictionary *${1:dictionary} = @{ ${2:key} : ${3:value} };
+
+snippet continuation
+    @interface ${1:class name} ()
+    ${2:continuation}
+    @end
+
+snippet -
+    - (${1:returnType})${2:method}:${3:arguments}
+    {
+        ${4:context}
+    }
+
+snippet +
+    + (${1:returnType})${2:method}:${3:arguments}
+    {
+        ${4:context}
+    }
+
+snippet dealloc
+    - (void)dealloc {
+        ${0}
+    }
+
+snippet setter
+    - (void)set${1:setter}:(${2:type})${3:setter}
+    {
+        _${3:setter} = ${3:setter}
+    }
+
+snippet getter
+    - (${1:type})${2:getter}
+    {
+        ${3:context}
+
+        return ${2:getter};
+    }
+
+snippet dispatch_after
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, ${1:1.0}￼ * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        ${2:code}￼
+    });
+
+snippet async
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        ${1}￼
+    });
+
+snippet NSString
+    NSString *${1:string} = @"${2:insertion point}";
+
+snippet NSMutableString
+    NSMutableString *${1:string} = [NSMutableString string];
+    ${1:string} = @"${2:content}";
+
+snippet nsl
+    NSLocalizedString(@"${1:message}", ${2:comment})
+
+snippet mark
+    #pragma mark - ${1:insertion}
+
+snippet debug
+    #if DEBUG
+        ${1:insertion}
+    #endif
+snippet release
+    #if RELEASE
+        ${1:insertion}
+    #endif
+
+snippet for
+    for (${1:id object} in ${2:enumerator}) {
+        ${3:context}
+    }
+
+snippet if
+    if (${1:insertion}) {
+        ${2:context}
+    }
+
+snippet else
+    else {
+        ${1}
+    }
+
+snippet cgframe
+    CGRect ${1:frame} = ${2:self.view.frame};
+
+snippet cgrectx
+    CGFloat ${1:x}￼ = CGRectGetMinX(${2:frame});
+
+snippet cgrecty
+    CGFloat ${1:x}￼ = CGRectGetMinY(${2:frame});
+
+snippet cgrectw
+    CGFloat ${1:x}￼ = CGRectGetWidth(${2:frame});
+
+snippet cgrecth
+    CGFloat ${1:x}￼ = CGRectGetHeight(${2:frame});
+
+snippet CGRectMake
+    CGRectMake(${1:x}, ${2:y}, ${3:width}, ${4:height})

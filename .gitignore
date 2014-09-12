@@ -12,3 +12,5 @@ symlinks.txt
 config/filezilla/*
 
 vim/.netrwhist
+
+warprc

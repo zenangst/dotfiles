@@ -22,29 +22,31 @@ let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 let g:SuperTabDefaultCompletionType = "context"
 
 " neocomplete
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 1
+let g:neocomplete#data_directory = "/Users/christofferwinterkvist/Dropbox/com~apple~CloudDocs/dotfiles/vim/cache/neocomplete"
+let g:neocomplete#disable_auto_complete = 1
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_select = 1
-let g:neocomplete#enable_ignore_case = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#data_directory = "/Users/christofferwinterkvist/Dropbox/com~apple~CloudDocs/dotfiles/vim/cache/neocomplete"
-let g:neocomplete#enable_fuzzy_completion = 0
+let g:neocomplete#enable_prefetch = 1
+let g:neocomplete#max_list = 15
+let g:neocomplete#use_vimproc=1
 
 if !exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns = {}
 endif
-let g:neocomplete#force_overwrite_completefunc = 1
 let g:neocomplete#force_omni_input_patterns.c      = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#force_omni_input_patterns.cpp    = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplete#force_omni_input_patterns.objc   = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplete#force_omni_input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplete#force_overwrite_completefunc = 1
+
+let g:neocomplete#sources._ = ['buffer']
+let g:neocomplete#sources.objc = ['_']
 
 imap <expr> <CR> pumvisible()
                      \ ? "\<C-Y>"
                      \ : "<Plug>delimitMateCR"
-inoremap <expr><BS>   neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-Space> pumvisible() ? neocomplete#close_popup()."\<Space>" : "\<Space>"
+"inoremap <expr><C-Space> pumvisible() ? neocomplete#close_popup()."\<Space>" : "\<Space>"
 inoremap <expr><C-e>  neocomplete#cancel_popup()
 inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
@@ -77,12 +79,17 @@ let g:clang_close_preview = 1
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
 
+let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+if isdirectory(s:clang_library_path)
+    let g:clang_library_path=s:clang_library_path
+endif
+
 " gitgutter
 highlight clear SignColumn
 
 let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines = 1
-let g:gitgutter_realtime = 0
+let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 let g:gitgutter_signs = 1
 let g:gitgutter_sign_column_always = 1
@@ -99,7 +106,7 @@ let g:delimitMate_expand_cr = 1
 let g:session_autoload = 'no'
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 2
-let g:session_default_to_last = 0
+let g:session_default_to_last = 1
 let g:session_verbose_messages = 0
 set sessionoptions-=help
 
@@ -107,21 +114,33 @@ set sessionoptions-=help
 let CoVim_default_name = "chrisw"
 let CoVim_default_port = "22"
 
-" Show sidebar signs.
+" Syntastic
 let g:syntastic_enable_signs=1
-
-" Read the clang complete file
 let g:syntastic_objc_config_file = '.clang_complete'
+let g:syntastic_objc_check_header = 1
+let g:syntastic_objc_no_include_search = 1
+let g:syntastic_objc_no_default_include_dirs = 1
+let g:syntastic_objc_auto_refresh_includes = 1
+let g:syntastic_objc_checker = 'clang'
+let g:syntastic_objc_compiler = 'clang'
 
 " Status line configuration
-set statusline+=%#warningmsg#  " Add Error ruler.
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+ set statusline+=%#warningmsg#  " Add Error ruler.
+ set statusline+=%{SyntasticStatuslineFlag()}
+ set statusline+=%*
 nnoremap <silent> ` :Errors<CR>
 
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-
 " LimeLight
-set g:limelight_default_coefficient = 0.4
+if has("gui_running")
+    set g:limelight_default_coefficient = 0.4
+endif
+
+" Ag
+let g:aghighlight=1
+let g:ag_lhandler="topleft lopen"
+
+" rainbow
+au VimEnter * RainbowParenthesesToggle
+au BufWinEnter * RainbowParenthesesLoadRound
+au BufWinEnter * RainbowParenthesesLoadSquare
+au BufWinEnter * RainbowParenthesesLoadBraces

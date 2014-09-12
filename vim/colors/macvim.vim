@@ -17,7 +17,7 @@ if exists("syntax_on")
 endif
 
 let colors_name = "macvim"
-set guifont=Bitstream\ Vera\ Sans\ Mono:h12
+set guifont=Menlo:h12
 
 "
 " First list all groups common to both 'light' and 'dark' background.
