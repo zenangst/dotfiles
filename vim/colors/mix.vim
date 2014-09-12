@@ -14,7 +14,7 @@ if exists("syntax_on")
 endif
 set background=light
 set transparency=0
-set guifont=Menlo:h11
+set guifont=Menlo:h12
 let g:colors_name="mix"
 
 hi Normal  guifg=#1a1a1a  guibg=white
@@ -57,7 +57,7 @@ if version >= 700
   hi PmenuSbar   guifg=#d0d5dd  guibg=#F5F5F5  gui=bold
  "" hi PmenuSbar   guifg=#d0d5dd  guibg=#e0e5ee  gui=bold
   hi PmenuThumb  guifg=#e0e5ee  guibg=#e0e5ee  gui=bold
-  hi Search      guibg=#fcfcaa  gui=none
+  hi Search      guibg=#fcfcaa  gui=bold
   hi IncSearch   guibg=#ffff33  gui=bold
 endif
 
@@ -107,3 +107,4 @@ hi User2 guifg=#999999  guibg=#e0e0e0
 hi User3 guifg=#999999  guibg=#dddddd
 hi User4 guifg=#999999  guibg=#d0d0d0
 
+let g:interestingWordsGUIColors = ['#eff8ff', '#d1ebff', '#b3ddff', '#d9f0cb', '#c8e8b4', '#a6d687', '#f9f2ba', '#f6ec9d', '#f2e581', '#f5d2fc', '#eeb8f9', '#e084f1', '#f4b9bf', '#ef9fa7', '#e9868f']
