@@ -121,7 +121,6 @@ let g:syntastic_objc_check_header = 1
 let g:syntastic_objc_no_include_search = 1
 let g:syntastic_objc_no_default_include_dirs = 1
 let g:syntastic_objc_auto_refresh_includes = 1
-let g:syntastic_objc_checker = 'clang'
 let g:syntastic_objc_compiler = 'clang'
 
 " Status line configuration
@@ -144,3 +143,7 @@ au VimEnter * RainbowParenthesesToggle
 au BufWinEnter * RainbowParenthesesLoadRound
 au BufWinEnter * RainbowParenthesesLoadSquare
 au BufWinEnter * RainbowParenthesesLoadBraces
+
+" localvimrc
+let g:localvimrc_sandbox = 0
+let g:localvimrc_ask = 0

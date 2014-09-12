@@ -117,6 +117,9 @@ set foldlevelstart=20
 set virtualedit=onemore
 set whichwrap+=<,>,h,l,[,]
 
+set exrc
+set secure
+
 if has("gui_running")
     source ~/.vim/config/gui.vim
 endif
