@@ -101,9 +101,9 @@ nmap <Leader>hv <Plug>GitGutterPreviewHunk
 :inoremap <D-N> <esc>:silent !mvim -f "%" & <CR>
 
 " Select words
-:nnoremap <C-w> viw
-:map! <C-w> <esc><up>viw
-:vmap <C-w> <esc><up>bviw
+:nnoremap <C-w> gkviw
+:map! <C-w> <esc>gkviw
+:vmap <C-w> <esc>gkbviw
 
 :nnoremap <C-d> viw
 :map! <C-d> <esc>viw
@@ -113,47 +113,47 @@ nmap <Leader>hv <Plug>GitGutterPreviewHunk
 :map! <C-a> <esc>viw
 :vmap <C-a> <esc>b<left>bviw
 
-:nnoremap <C-s> <down>viw
-:map! <C-s> <esc>viw
-:vmap <C-s> <esc>b<down>viw
+:nnoremap <C-s> gjviw
+:map! <C-s> <esc>gjviw
+:vmap <C-s> <esc>bgjviw
 
 :nnoremap ® A
 :inoremap ® <ESC>A
 :inoremap √ <ESC>0i
 
 " Navigation (Left hand)
-:nnoremap Ω <up>
+:nnoremap Ω gk
 :nnoremap  <left>
 :nnoremap ∂ <right>
-:nnoremap ß <down>
+:nnoremap ß gj
 :map! Ω <up>
 :map!  <left>
 :map! ∂ <right>
 :map! ß <down>
 :map! ® <ESC>A
 :map! √ <ESC>0i
-:inoremap Ω <up>
+:inoremap <expr> Ω pumvisible() ? "\<up>" : "\<esc>gkil"
 :inoremap  <left>
 :inoremap ∂ <right>
-:inoremap ß <down>
+:inoremap <expr> ß pumvisible() ? "\<down>" : "\<esc>gjil"
 :vmap Ω <up>
 :vmap  <left>
 :vmap ∂ <right>
 :vmap ß <down>
 
 " Naviation (Right hand)
-:nnoremap π <up>
+:nnoremap π gk
 :nnoremap ﬁ <left>
 :nnoremap æ <right>
-:nnoremap ø <down>
+:nnoremap ø gj
 :map! π <up>
 :map! ﬁ <left>
 :map! æ <right>
 :map! ø <down>
-:inoremap π <up>
+:inoremap <expr>π pumvisible() ? "\<up>" : "\<esc>gkil"
 :inoremap ﬁ <left>
 :inoremap æ <right>
-:inoremap ø <down>
+:inoremap <expr>ø pumvisible() ? "\<down>" : "\<esc>gjil"
 :vmap ˝ <up>
 :vmap π <up>
 :vmap ﬁ <left>
@@ -209,7 +209,7 @@ nnoremap ◊ :call ToggleLimeLight()<CR>
 nnoremap <silent> ` :Errors<CR>
 
 " completions
-inoremap <expr> <C-space> pumvisible() ? "\<C-n>" : "\<C-x>\<C-n>\<C-n>"
+inoremap <expr> <C-space> "\<C-x>\<C-u>"
 inoremap <expr>  pumvisible()      ? "\<C-n>" : "\<C-x>\<C-n>\<C-n>"
 inoremap <expr> <d-cr> pumvisible()    ? "\<C-n>" : "\<C-x>\<C-n>\<C-n>"
 inoremap <expr> <BS> pumvisible() ? "\<esc>i\<right>\<BS>" : "\<BS>"
@@ -236,11 +236,11 @@ inoremap <D-O> <Plug>PeepOpen
 "vnoremap <D-O> <esc><Plug>PeepOpen
 
 " vim-expand-region
-map <d-b> <Plug>(expand_region_expand)
-map <d-B> <Plug>(expand_region_shrink)
+"map <d-b> <Plug>(expand_region_expand)
+"map <d-B> <Plug>(expand_region_shrink)
 
 " vim-interestingwords
-noremap <D-’> :call UncolorAllWords()<cr>
-vnoremap <D-2> :call InterestingWords()<cr>
-nnoremap <silent> n :call WordNavigation('forward')<cr>
-nnoremap <silent> N :call WordNavigation('backward')<cr>
+nnoremap <D-’> :call UncolorAllWords()<cr>
+nnoremap m :call InterestingWords()<cr>
+nnoremap <silent> <leader>k :call InterestingWords()<cr>
+nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
